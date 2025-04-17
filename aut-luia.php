@@ -94,6 +94,34 @@
             </div>
           </div>
         </div>
+        <hr>
+          <h4>💬 Komentar Pengunjung</h4>
+
+          <!-- Form komentar -->
+          <form method="post" action="">
+            <div class="mb-3">
+              <label for="nama" class="form-label">Nama:</label>
+              <input type="text" class="form-control" id="nama" name="nama">
+            </div>
+            <div class="mb-3">
+              <label for="komentar" class="form-label">Komentar:</label>
+              <textarea class="form-control" id="komentar" name="komentar" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim Komentar</button>
+          </form>
+
+          <!-- Tampilkan komentar -->
+          <?php
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nama = $_POST['nama'] ?? '';
+            $komentar = $_POST['komentar'] ?? '';
+
+            echo "<hr><h5>Komentar Terbaru:</h5>";
+            echo "<p><strong>Nama:</strong> $nama</p>";        // ⚠️ Rawan XSS
+            echo "<p><strong>Komentar:</strong> $komentar</p>";// ⚠️ Rawan XSS
+          }
+          ?>
+
       </section>
       <!-- /About Section -->
 
